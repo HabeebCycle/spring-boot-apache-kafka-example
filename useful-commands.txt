@@ -1,0 +1,24 @@
+zkserver:   
+    Start zookeeper server (Default port 2181)
+
+.\bin\windows\kafka-server-start.bat .\config\server.properties
+    ---Start kafka server on windows environment (Default port 9092)
+
+.\bin\kafka-server-start.sh .\config\server.properties
+    ---Start kafka server on linux environment (Default port 9092)
+
+kafka-topics.{sh or bat} --create --zookeeper localhost:{zookeeper-port} --replication-factor {rep-fac-num} --partitions {par-num} --topic {topic-name}
+    ---Create a new kafka topic .sh(linux), .bat(windows), zookeeper-port(Default port 9092), 
+    rep-fac-num(Number of replication factors, default is 1), par-numInumber of partitions default is 1), topic-name(The name of the topic)
+
+.\bin\windows>kafka-console-producer.bat --broker-list localhost:{kafka-port} --topic {topic-name}
+    ---Starting a producer broker on windows environment {kafka-port - Default port 9092}
+
+.\bin>kafka-console-producer.sh --broker-list localhost:{kafka-port} --topic {topic-name}
+    ---Starting a producer broker on linux environment {kafka-port - Default port 9092}
+
+.\bin\windows>kafka-console-consumer.bat --bootstrap-server localhost:{kafka-port} --topic {topic-name}  
+    ---Starting a consumer bootstrap server on windows environment
+
+.\bin>kafka-console-consumer.bat --bootstrap-server localhost:{kafka-port} --topic {topic-name}  
+    ---Starting a consumer bootstrap server on linux environment
